@@ -1,3 +1,4 @@
+target8.type=UnitTestTargetJunit4
 #BlueJ package file
 dependency1.from=Rechteck
 dependency1.to=Leinwand

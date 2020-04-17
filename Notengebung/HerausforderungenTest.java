@@ -39,13 +39,4 @@ public class HerausforderungenTest
         assertTrue(herausforderung.anagramme("vater","verta"));
         assertFalse(herausforderung.anagramme("vater","mutter"));
     }
-    
-    
-
-    @Test
-    public void fibonacciFunktioniert()
-    {
-        Herausforderungen herausfo1 = new Herausforderungen();
-    }
 }
-

@@ -1,3 +1,4 @@
+  private void loeschen()
 import java.awt.Rectangle;
 
 
