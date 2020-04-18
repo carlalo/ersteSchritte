@@ -19,14 +19,15 @@ public class Rechenspiel
     public Rechenspiel()
     {while(g==g){
             entscheidung();
-            System.out.println("Wenn du dich vertippst hast gebe 'ja'ein.");
-            System.out.println("Wenn du nicht erneut spielen möchtest gebe 'nein' ein.");
+
+            System.out.println("Wenn du nicht erneut spielen möchtest gebe 'nein' ein, ansonsten irgenwas");
             Scanner r=new Scanner(System.in);
             String b=r.next();
             if(nein.equalsIgnoreCase(b)){
                 System.out.println("Du kannst das Terminal nun schließen.");
                 System.exit(0);
             }
+
         }
 
     }
@@ -87,7 +88,8 @@ public class Rechenspiel
                 if(eingabe[i]==richtigesErgebnis){
                     zähler=zähler+1;
                 }
-            }}
+            }
+        }
 
         ende(zähler);
         for(int i=1;i<11;i++){
@@ -97,6 +99,11 @@ public class Rechenspiel
                 System.out.println(""+zufall1[i]+"*"+zufall2[i]+"="+zufall1[i]*zufall2[i]);
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
+        }
+        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
+        Scanner p=new Scanner(System.in);
+        if("Statistik".equalsIgnoreCase(p.next())){
+            diagrammErstellen(zähler, "einfach mal");
         }
     }
 
@@ -119,7 +126,8 @@ public class Rechenspiel
                 if(eingabe[i]==richtigesErgebnis){
                     zähler=zähler+1;
                 }
-            }}
+            }
+        }
 
         ende(zähler);
         for(int i=1;i<11;i++){
@@ -129,6 +137,11 @@ public class Rechenspiel
                 System.out.println(""+zufall1[i]+"*"+zufall2[i]+"="+zufall1[i]*zufall2[i]);
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
+        }
+        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
+        Scanner p=new Scanner(System.in);
+        if("Statistik".equalsIgnoreCase(p.next())){
+            diagrammErstellen(zähler, "schwer mal");
         }
     }
 
@@ -162,6 +175,11 @@ public class Rechenspiel
                 System.out.println(""+zufall1[i]+"*"+zufall2[i]+"="+zufall1[i]*zufall2[i]);
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
+        }
+        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
+        Scanner p=new Scanner(System.in);
+        if("Statistik".equalsIgnoreCase(p.next())){
+            diagrammErstellen(zähler, "extrem mal");
         }
     }
 
@@ -218,6 +236,11 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
+        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
+        Scanner p=new Scanner(System.in);
+        if("Statistik".equalsIgnoreCase(p.next())){
+            diagrammErstellen(zähler, "einfach geteilt");
+        }
     }
 
     public void schwerGeteilt(){
@@ -251,6 +274,11 @@ public class Rechenspiel
                 System.out.println(""+richtigesErgebnis[i]+"/"+zufall2[i]+"="+richtigesErgebnis[i]/zufall2[i]);
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
+        }
+        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
+        Scanner p=new Scanner(System.in);
+        if("Statistik".equalsIgnoreCase(p.next())){
+            diagrammErstellen( zähler, "schwer geteilt");
         }
     }
 
@@ -286,6 +314,11 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
+        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
+        Scanner p=new Scanner(System.in);
+        if("Statistik".equalsIgnoreCase(p.next())){
+            diagrammErstellen(zähler, "extrem geteilt");
+        }
     }
 
     public void ende(int zähler){
@@ -297,6 +330,67 @@ public class Rechenspiel
         System.out.println("Nun die richtigen Ergebnisse für deine falschen Antworten");
         if(zähler==10){
             System.out.println("Oh alles richtig :-)");
+        }
+    }
+
+    public void diagrammErstellen(int punktzahl, String schwierigkeitsgrad)
+    {
+        String[] diagramm=new String[12];
+        diagramm[0]="10|   |";
+        diagramm[1]=" 9|   |";
+        diagramm[2]=" 8|   |";
+        diagramm[3]=" 7|   |";
+        diagramm[4]=" 6|   |";
+        diagramm[5]=" 5|   |";
+        diagramm[6]=" 4|   |";
+        diagramm[7]=" 3|   |";
+        diagramm[8]=" 2|   |";
+        diagramm[9]=" 1|   |";
+        diagramm[10]="------";
+        diagramm[11]=schwierigkeitsgrad;
+        if(punktzahl==10)
+        {
+            diagramm[0]="10| * |";
+        }
+        if(punktzahl>=9)
+        {
+            diagramm[1]=" 9| * |";
+        }
+        if(punktzahl>=8)
+        {
+            diagramm[2]=" 8| * |";
+        }
+        if(punktzahl>=7)
+        {
+            diagramm[3]=" 7| * |";
+        }
+        if(punktzahl>=6)
+        {
+            diagramm[4]=" 6| * |";
+        }
+        if(punktzahl>=5)
+        {
+            diagramm[5]=" 5| * |";
+        }
+        if(punktzahl>=4)
+        {
+            diagramm[6]=" 4| * |";
+        }
+        if(punktzahl>=3)
+        {
+            diagramm[7]=" 3| * |";
+        }
+        if(punktzahl>=2)
+        {
+            diagramm[8]=" 2| * |";
+        }
+        if(punktzahl>=1)
+        {
+            diagramm[9]=" 1| * |";
+        }
+        for(int zeile=0;zeile<=11;++zeile)
+        {
+            System.out.println(diagramm[zeile]);
         }
     }
 } 

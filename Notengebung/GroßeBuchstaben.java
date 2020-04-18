@@ -28,11 +28,11 @@ public class GroßeBuchstaben
     private String[] C()
     {   
         String[] c=new String[5];
-        c[0]=" ****";
+        c[0]="  ***";
         c[1]=" *   ";
         c[2]=" *   ";
         c[3]=" *   ";
-        c[4]=" ****";
+        c[4]="  ***";
         return c;
     }
 
@@ -117,33 +117,33 @@ public class GroßeBuchstaben
     private String[] K()
     {   
         String[] k=new String[5];
-        k[0]=" *  *";
-        k[1]=" * * ";
-        k[2]=" **  ";
-        k[3]=" * * ";
-        k[4]=" *  *";
+        k[0]=" *  * ";
+        k[1]=" * *  ";
+        k[2]=" **   ";
+        k[3]=" * *  ";
+        k[4]=" *  * ";
         return k;
     }
 
     private String[] L()
     {
         String[] l=new String[5];
-        l[0]=" *   ";
-        l[1]=" *   ";
-        l[2]=" *   ";
-        l[3]=" *   ";
-        l[4]=" ****";
+        l[0]=" *    ";
+        l[1]=" *    ";
+        l[2]=" *    ";
+        l[3]=" *    ";
+        l[4]=" **** ";
         return l;
     }
 
     private String[] M()
     {
         String[] m=new String[5];
-        m[0]=" *   *";
-        m[1]=" ** **";
-        m[2]=" * * *";
-        m[3]=" *   *";
-        m[4]=" *   *";
+        m[0]=" *   * ";
+        m[1]=" ** ** ";
+        m[2]=" * * * ";
+        m[3]=" *   * ";
+        m[4]=" *   * ";
         return m;
     }
 
@@ -216,11 +216,11 @@ public class GroßeBuchstaben
     private String[] T()
     {
         String[] t=new String[5];
-        t[0]="*****";
-        t[1]="  *  ";
-        t[2]="  *  ";
-        t[3]="  *  ";
-        t[4]="  *  ";
+        t[0]=" *****";
+        t[1]="   *  ";
+        t[2]="   *  ";
+        t[3]="   *  ";
+        t[4]="   *  ";
         return t;
     }
 
@@ -431,6 +431,10 @@ public class GroßeBuchstaben
                     if("Z".equalsIgnoreCase(String.valueOf(eingabe.charAt(count-1))))
                     {
                         System.out.print(buchstaben[25][zeile]);
+                    }
+                    if(" ".equalsIgnoreCase(String.valueOf(eingabe.charAt(count-1))))
+                    {
+                        System.out.print("   ");
                     }
 
                     count=count+1;
