@@ -2,49 +2,56 @@
 import java.util.Scanner;
 public class Rechenspiel
 { 
+    int count=1;
     int g=0;
     String ja="ja";
     String nein="nein";
     private int zähler=0;
 
-    String einfach="einfach";
-    String schwer="schwer";
-    String extrem="extrem";
-
+    String einfach="e";
+    String schwer="s";
+    String extrem="x";
+    String[][] diagramm=new String[5][12];
     long[]zufall1=new long[12];
     long[]zufall2=new long[12];
     long[]eingabe=new long[12];
     Scanner s=new Scanner(System.in);
 
     public Rechenspiel()
-    {while(g==g){
+    {for(int runde=0;runde<5;++runde){
             entscheidung();
 
-            System.out.println("Wenn du nicht erneut spielen möchtest gebe 'nein' ein, ansonsten irgenwas");
+            System.out.println("Wenn du nicht erneut spielen möchtest gebe 'n' ein");
+            System.out.println("Wenn du stattdessen in die nächste Runde willst, gebe irgendwas Anderes ein.");
             Scanner r=new Scanner(System.in);
             String b=r.next();
-            if(nein.equalsIgnoreCase(b)){
+            if("n".equalsIgnoreCase(b)){
                 System.out.println("Du kannst das Terminal nun schließen.");
                 System.exit(0);
             }
 
         }
-
+        System.out.println("Das Spiel ist nun zu Ende. Ich hoffe es war zufriedenstellend");
     }
 
     public void entscheidung(){
-        System.out.println("Entscheide dich zwischen 'mal' und 'geteilt'.");
+        System.out.println("Das Spiel geht über vier Runden");
+        System.out.println("Entscheide dich zwischen '(m)al' und '(g)eteilt'.");
         Scanner scanner=new Scanner(System.in);
         String a="";
-        String b="geteilt";
-        String c="mal";
+        String b="g";
+        String c="m";
         a=scanner.next();
 
-        if(b.equalsIgnoreCase(a)){
+        if(b.equalsIgnoreCase(a))
+        {
             letsGoGeteilt();
-        }else{if(c.equalsIgnoreCase(a)){
-                letsGoMal();}
-
+        }
+        else{
+            if(c.equalsIgnoreCase(a))
+            {
+                letsGoMal();
+            }
         }
     }
 
@@ -54,15 +61,22 @@ public class Rechenspiel
         System.out.println("Dir werden nun 10 Aufgaben gestellt.");
         System.out.println("Diese beantwortest du, indem du einfach die Antwort eintippst");
         System.out.println("Als erstes musst du dich entscheiden.");
-        System.out.println("Wähle 'einfach','schwer'oder 'extrem', indem du es eintippst!");
+        System.out.println("Wähle '(e)infach','(s)chwer'oder 'e(x)trem', indem du es eintippst!");
         String entscheidung=s.next();
-        if(einfach.equalsIgnoreCase(entscheidung)){
+        if(einfach.equalsIgnoreCase(entscheidung))
+        {
             einfachMal();
-        }else{
-            if(schwer.equalsIgnoreCase(entscheidung)){
+        }
+        else
+        {
+            if(schwer.equalsIgnoreCase(entscheidung))
+            {
                 schwerMal();
-            }else{
-                if(extrem.equalsIgnoreCase(entscheidung)){
+            }
+            else
+            {
+                if(extrem.equalsIgnoreCase(entscheidung))
+                {
                     extremMal();
                 }
             }
@@ -100,11 +114,9 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
-        Scanner p=new Scanner(System.in);
-        if("Statistik".equalsIgnoreCase(p.next())){
-            diagrammErstellen(zähler, "einfach mal");
-        }
+
+        diagrammErstellen(count,zähler, " e  ");
+        count =count+1;
     }
 
     public void extremMal(){
@@ -138,11 +150,10 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
-        Scanner p=new Scanner(System.in);
-        if("Statistik".equalsIgnoreCase(p.next())){
-            diagrammErstellen(zähler, "schwer mal");
-        }
+
+        diagrammErstellen(count,zähler, " x  ");
+
+        count =count+1;
     }
 
     public void schwerMal(){
@@ -176,11 +187,10 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
-        Scanner p=new Scanner(System.in);
-        if("Statistik".equalsIgnoreCase(p.next())){
-            diagrammErstellen(zähler, "extrem mal");
-        }
+
+        diagrammErstellen(count,zähler, " s  ");
+
+        count =count+1;
     }
 
     public void letsGoGeteilt()
@@ -189,14 +199,21 @@ public class Rechenspiel
         System.out.println("Dir werden nun 10 Aufgaben gestellt.");
         System.out.println("Diese beantwortest du, indem du einfach die Antwort eintippst");
         System.out.println("Als erstes musst du dich entscheiden.");
-        System.out.println("Wähle 'einfach','schwer'oder 'extrem', indem du es eintippst!");
+        System.out.println("Wähle '(e)infach','(s)chwer'oder 'e(x)trem', indem du es eintippst!");
         String entscheidung=s.next();
-        if(einfach.equalsIgnoreCase(entscheidung)){
+        if("e".equalsIgnoreCase(entscheidung))
+        {
             einfachGeteilt();
-        }else{
-            if(schwer.equalsIgnoreCase(entscheidung)){
+        }
+        else
+        {
+            if("s".equalsIgnoreCase(entscheidung))
+            {
                 schwerGeteilt();
-            }else{if(extrem.equalsIgnoreCase(entscheidung)){
+            }
+            else{
+                if("x".equalsIgnoreCase(entscheidung))
+                {
                     extremGeteilt();
                 }
             }
@@ -236,11 +253,10 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
-        Scanner p=new Scanner(System.in);
-        if("Statistik".equalsIgnoreCase(p.next())){
-            diagrammErstellen(zähler, "einfach geteilt");
-        }
+
+        diagrammErstellen(count,zähler, " e  ");
+
+        count =count+1;
     }
 
     public void schwerGeteilt(){
@@ -275,11 +291,10 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
-        Scanner p=new Scanner(System.in);
-        if("Statistik".equalsIgnoreCase(p.next())){
-            diagrammErstellen( zähler, "schwer geteilt");
-        }
+
+        diagrammErstellen(count, zähler, " s  ");
+
+        count =count+1;
     }
 
     public void extremGeteilt(){
@@ -314,11 +329,10 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-        System.out.println("Wenn du deine Statistik sehen möchtest gebe 'Statistik' ein");
-        Scanner p=new Scanner(System.in);
-        if("Statistik".equalsIgnoreCase(p.next())){
-            diagrammErstellen(zähler, "extrem geteilt");
-        }
+
+        diagrammErstellen(count,zähler, " x  ");
+
+        count =count+1;
     }
 
     public void ende(int zähler){
@@ -333,64 +347,91 @@ public class Rechenspiel
         }
     }
 
-    public void diagrammErstellen(int punktzahl, String schwierigkeitsgrad)
+    public void diagrammErstellen(int runde,int punktzahl, String schwierigkeitsgrad)
     {
-        String[] diagramm=new String[12];
-        diagramm[0]="10|   |";
-        diagramm[1]=" 9|   |";
-        diagramm[2]=" 8|   |";
-        diagramm[3]=" 7|   |";
-        diagramm[4]=" 6|   |";
-        diagramm[5]=" 5|   |";
-        diagramm[6]=" 4|   |";
-        diagramm[7]=" 3|   |";
-        diagramm[8]=" 2|   |";
-        diagramm[9]=" 1|   |";
-        diagramm[10]="------";
-        diagramm[11]=schwierigkeitsgrad;
+        diagramm[0][0]="10|";
+        diagramm[0][1]=" 9|";
+        diagramm[0][2]=" 8|";
+        diagramm[0][3]=" 7|";
+        diagramm[0][4]=" 6|";
+        diagramm[0][5]=" 5|";
+        diagramm[0][6]=" 4|";
+        diagramm[0][7]=" 3|";
+        diagramm[0][8]=" 2|";
+        diagramm[0][9]=" 1|";
+        diagramm[0][10]="---";
+        diagramm[0][11]="   ";
+
+        diagramm[runde][0]="   |";
+        diagramm[runde][1]="   |";
+        diagramm[runde][2]="   |";
+        diagramm[runde][3]="   |";
+        diagramm[runde][4]="   |";
+        diagramm[runde][5]="   |";
+        diagramm[runde][6]="   |";
+        diagramm[runde][7]="   |";
+        diagramm[runde][8]="   |";
+        diagramm[runde][9]="   |";
+        diagramm[runde][10]="----";
+        diagramm[runde][11]=schwierigkeitsgrad;
         if(punktzahl==10)
         {
-            diagramm[0]="10| * |";
+            diagramm[runde][0]=" * |";
         }
         if(punktzahl>=9)
         {
-            diagramm[1]=" 9| * |";
+            diagramm[runde][1]=" * |";
         }
         if(punktzahl>=8)
         {
-            diagramm[2]=" 8| * |";
+            diagramm[runde][2]=" * |";
         }
         if(punktzahl>=7)
         {
-            diagramm[3]=" 7| * |";
+            diagramm[runde][3]=" * |";
         }
         if(punktzahl>=6)
         {
-            diagramm[4]=" 6| * |";
+            diagramm[runde][4]=" * |";
         }
         if(punktzahl>=5)
         {
-            diagramm[5]=" 5| * |";
+            diagramm[runde][5]=" * |";
         }
         if(punktzahl>=4)
         {
-            diagramm[6]=" 4| * |";
+            diagramm[runde][6]=" * |";
         }
         if(punktzahl>=3)
         {
-            diagramm[7]=" 3| * |";
+            diagramm[runde][7]=" * |";
         }
         if(punktzahl>=2)
         {
-            diagramm[8]=" 2| * |";
+            diagramm[runde][8]=" * |";
         }
         if(punktzahl>=1)
         {
-            diagramm[9]=" 1| * |";
+            diagramm[runde][9]=" * |";
         }
         for(int zeile=0;zeile<=11;++zeile)
         {
-            System.out.println(diagramm[zeile]);
+            System.out.print(diagramm[0][zeile]);
+            if(count==4)
+            {
+                System.out.print(diagramm[4][zeile]);
+            }
+            if(count>=3)
+            {
+                System.out.print(diagramm[3][zeile]);
+            }
+            if(count>=2)
+            {
+                System.out.print(diagramm[2][zeile]);
+            }
+
+            System.out.println(diagramm[1][zeile]);
+
         }
     }
 } 
