@@ -11,7 +11,7 @@ public class Rechenspiel
     String einfach="e";
     String schwer="s";
     String extrem="x";
-    String[][] diagramm=new String[5][12];
+    String[][] diagramm;
     long[]zufall1=new long[12];
     long[]zufall2=new long[12];
     long[]eingabe=new long[12];
@@ -19,24 +19,33 @@ public class Rechenspiel
 
     public Rechenspiel()
     {
-        System.out.println("Das Spiel geht über vier Runden");
-        for(int runde=0;runde<5;++runde){
+
+    }
+
+    public void start(int anzahl)
+    {
+        diagramm=new String[anzahl+1][12];
+        System.out.format("Das Spiel geht über %d Runden\n",anzahl);
+        for(int runde=0;runde<anzahl;++runde){
             System.out.println(runde+1+".Runde");
             entscheidung();
-            System.out.println("Wenn du nicht erneut spielen möchtest gebe 'n' ein");
-            System.out.println("Wenn du stattdessen in die nächste Runde willst, gebe irgendwas Anderes ein.");
-            Scanner r=new Scanner(System.in);
-            String b=r.next();
-            if("n".equalsIgnoreCase(b)){
-                System.out.println("Du kannst das Terminal nun schließen.");
-                System.exit(0);
+            if(runde!=anzahl)
+            {
+                System.out.println("Wenn du nicht erneut spielen möchtest gebe 'n' ein");
+                System.out.println("Wenn du stattdessen in die nächste Runde willst, gebe irgendwas Anderes ein.");
+                Scanner r=new Scanner(System.in);
+                String b=r.next();
+                if("n".equalsIgnoreCase(b))
+                {
+                    System.out.println("Du kannst das Terminal nun schließen.");
+                    System.exit(0);
+                }
             }
-
         }
         System.out.println("Das Spiel ist nun zu Ende. Ich hoffe es war zufriedenstellend");
     }
 
-    public void entscheidung(){
+    private void entscheidung(){
 
         System.out.println("Entscheide dich zwischen '(m)al' und '(g)eteilt'.");
         Scanner scanner=new Scanner(System.in);
@@ -57,7 +66,7 @@ public class Rechenspiel
         }
     }
 
-    public void letsGoMal()
+    private void letsGoMal()
     {System.out.println("Du hast dich für 'mal'entschieden");
         System.out.println("");
         System.out.println("Dir werden nun 10 Aufgaben gestellt.");
@@ -85,7 +94,7 @@ public class Rechenspiel
         }
     }
 
-    public void einfachMal(){
+    private void einfachMal(){
         zähler=0;
         System.out.println("Du hast dich für 'einfach' entschieden.Viel Spaß :-)");
         for(int i=1;i<11;i++){
@@ -116,12 +125,12 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-       
+
         diagrammErstellen(count,zähler, " e  ");
         count =count+1;
     }
 
-    public void extremMal(){
+    private void extremMal(){
         zähler=0;
         System.out.println("Du hast dich für 'extrem' entschieden.Viel Spaß :-)");
         for(int i=1;i<11;i++){
@@ -152,13 +161,13 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-        
+
         diagrammErstellen(count,zähler, " x  ");
 
         count =count+1;
     }
 
-    public void schwerMal(){
+    private void schwerMal(){
         zähler=0;
         System.out.println("Du hast dich für 'schwer' entschieden.Viel Spaß :-)");
         for(int i=1;i<11;i++){
@@ -189,13 +198,13 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-       
+
         diagrammErstellen(count,zähler, " s  ");
 
         count =count+1;
     }
 
-    public void letsGoGeteilt()
+    private void letsGoGeteilt()
     {System.out.println("Du hast dich für 'geteilt'entschieden.");
         System.out.println("");
         System.out.println("Dir werden nun 10 Aufgaben gestellt.");
@@ -223,7 +232,7 @@ public class Rechenspiel
         }
     }
 
-    public void einfachGeteilt(){
+    private void einfachGeteilt(){
         zähler=0;
         System.out.println("Du hast dich für 'einfach' entschieden.Viel Spaß :-)");
         long[] richtigesErgebnis=new long[11];
@@ -255,13 +264,13 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-  
+
         diagrammErstellen(count,zähler, " e  ");
 
         count =count+1;
     }
 
-    public void schwerGeteilt(){
+    private void schwerGeteilt(){
         System.out.println("Du hast dich für 'extrem' entschieden.Viel Spaß :-)");
         zähler=0;
         long[] richtigesErgebnis=new long[11];
@@ -293,13 +302,13 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-      
+
         diagrammErstellen(count, zähler, " s  ");
 
         count =count+1;
     }
 
-    public void extremGeteilt(){
+    private void extremGeteilt(){
         System.out.println("Du hast dich für 'extrem' entschieden.Viel Spaß :-)");
         zähler=0;
         long[] richtigesErgebnis=new long[11];
@@ -337,7 +346,7 @@ public class Rechenspiel
         count =count+1;
     }
 
-    public void ende(int zähler){
+    private void ende(int zähler){
         System.out.println("");
         System.out.println("Dein Ergebnis:");
         System.out.println("Du hast "+zähler+" von 10 Aufgaben richtig gelöst.");
@@ -349,7 +358,7 @@ public class Rechenspiel
         }
     }
 
-    public void diagrammErstellen(int runde,int punktzahl, String schwierigkeitsgrad)
+    private void diagrammErstellen(int runde,int punktzahl, String schwierigkeitsgrad)
     {
         diagramm[0][0]="10|";
         diagramm[0][1]=" 9|";
@@ -419,19 +428,10 @@ public class Rechenspiel
         for(int zeile=0;zeile<=11;++zeile)
         {
             System.out.print(diagramm[0][zeile]);
+            for(int index=1;index<=count;++index)
+            {
+                System.out.print(diagramm[index][zeile]);
 
-            System.out.print(diagramm[1][zeile]);
-            if(count>=2)
-            {
-                System.out.print(diagramm[2][zeile]);
-            }
-            if(count>=3)
-            {
-                System.out.print(diagramm[3][zeile]);
-            }
-            if(count==4)
-            {
-                System.out.print(diagramm[4][zeile]);
             }
             System.out.println("");
         }
