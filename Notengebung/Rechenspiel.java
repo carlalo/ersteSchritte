@@ -18,9 +18,11 @@ public class Rechenspiel
     Scanner s=new Scanner(System.in);
 
     public Rechenspiel()
-    {for(int runde=0;runde<5;++runde){
+    {
+        System.out.println("Das Spiel geht über vier Runden");
+        for(int runde=0;runde<5;++runde){
+            System.out.println(runde+1+".Runde");
             entscheidung();
-
             System.out.println("Wenn du nicht erneut spielen möchtest gebe 'n' ein");
             System.out.println("Wenn du stattdessen in die nächste Runde willst, gebe irgendwas Anderes ein.");
             Scanner r=new Scanner(System.in);
@@ -35,7 +37,7 @@ public class Rechenspiel
     }
 
     public void entscheidung(){
-        System.out.println("Das Spiel geht über vier Runden");
+
         System.out.println("Entscheide dich zwischen '(m)al' und '(g)eteilt'.");
         Scanner scanner=new Scanner(System.in);
         String a="";
@@ -114,7 +116,7 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-
+       
         diagrammErstellen(count,zähler, " e  ");
         count =count+1;
     }
@@ -150,7 +152,7 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-
+        
         diagrammErstellen(count,zähler, " x  ");
 
         count =count+1;
@@ -187,7 +189,7 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-
+       
         diagrammErstellen(count,zähler, " s  ");
 
         count =count+1;
@@ -253,7 +255,7 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-
+  
         diagrammErstellen(count,zähler, " e  ");
 
         count =count+1;
@@ -291,7 +293,7 @@ public class Rechenspiel
                 System.out.println("Deine Eingabe war:"+eingabe[i]);
             }
         }
-
+      
         diagrammErstellen(count, zähler, " s  ");
 
         count =count+1;
@@ -373,7 +375,7 @@ public class Rechenspiel
         diagramm[runde][8]="   |";
         diagramm[runde][9]="   |";
         diagramm[runde][10]="----";
-        diagramm[runde][11]=schwierigkeitsgrad;
+        diagramm[runde][11]=" "+runde+"  ";
         if(punktzahl==10)
         {
             diagramm[runde][0]=" * |";
@@ -417,21 +419,21 @@ public class Rechenspiel
         for(int zeile=0;zeile<=11;++zeile)
         {
             System.out.print(diagramm[0][zeile]);
-            if(count==4)
+
+            System.out.print(diagramm[1][zeile]);
+            if(count>=2)
             {
-                System.out.print(diagramm[4][zeile]);
+                System.out.print(diagramm[2][zeile]);
             }
             if(count>=3)
             {
                 System.out.print(diagramm[3][zeile]);
             }
-            if(count>=2)
+            if(count==4)
             {
-                System.out.print(diagramm[2][zeile]);
+                System.out.print(diagramm[4][zeile]);
             }
-
-            System.out.println(diagramm[1][zeile]);
-
+            System.out.println("");
         }
     }
 } 
