@@ -70,7 +70,7 @@ public class Hangman
 
     public void start()
     {
-        zufall=Integer.parseInt(String.valueOf(Math.round(Math.random()*5)));
+        zufall=Integer.parseInt(String.valueOf(Math.round(Math.random()*5-1)));
         ausprobierte=new String[26];
         leben=5;
         rundenanzahl=1;
@@ -154,7 +154,26 @@ public class Hangman
             System.out.println("");
         }
         gescannt=scanner.next();
-        ausprobierte[rundenanzahl-1]=gescannt;
+
+        int countbeidoppelt=0;
+        for(int buchstabe=0;buchstabe<ausprobierte.length;++buchstabe)
+        {
+            if(ausprobierte[buchstabe]!=null)
+            {
+                if(gescannt.equalsIgnoreCase(ausprobierte[buchstabe]))
+                {
+                    countbeidoppelt=countbeidoppelt+1;
+                }
+
+            }
+        }
+        if(0==countbeidoppelt)
+        {
+            ausprobierte[rundenanzahl-1]=gescannt;
+        }else
+        {
+            System.out.println("Das hast du bereits eingegeben!");
+        }
         if(gescannt.equalsIgnoreCase("0"))
         {
             System.exit(0);
@@ -205,7 +224,8 @@ public class Hangman
         {
             System.out.println("Du hast gewonnen!");
             System.out.println("Glückwunsch du konntest das richtige Wort:"+wörter[zufall]+", finden und das mit "+leben+" Leben übrig!");
-            System.exit(0);
+            leben=-1;
+          
         }
 
         rundenanzahl=rundenanzahl+1;
