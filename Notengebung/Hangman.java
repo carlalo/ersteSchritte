@@ -124,10 +124,13 @@ public class Hangman
                 }
             }
             System.out.print("Momentanes Wort:");
-
+            int count =0;
+            int countBeiFalsch=0;
             for(int index=0;index<wörter[zufall].length();++index)
             {       
-                istGefunden=false;
+
+                count =0;
+                countBeiFalsch=0;
                 for(int buchstabe=0;buchstabe<ausprobierte.length;++buchstabe)
                 {   
                     if(ausprobierte[buchstabe]!=null)
@@ -137,9 +140,15 @@ public class Hangman
                             System.out.print(ausprobierte[buchstabe]);
                         }else
                         {
-                            System.out.print("_");
+                            countBeiFalsch=countBeiFalsch+1;
                         }
+                        count=count+1;
                     }
+
+                }
+                if(count==countBeiFalsch)
+                {
+                    System.out.print("_");
                 }
             }
             System.out.println("");
@@ -170,12 +179,35 @@ public class Hangman
         {
             System.out.println("Falsch");
             leben=leben-1;
-            System.out.println("Jetzt hast du nur noch "+leben+" Leben. Setzte sie weiße ein.");
+            System.out.println("Jetzt hast du nur noch "+leben+" Leben. Setze sie weise ein.");
             for(int index=0;index<7;++index)
             {
                 System.out.println(männchen[leben][index]);
             }
         }
+        int zähler =0;
+        for(int index=0;index<wörter[zufall].length();++index)
+        {       
+
+            for(int buchstabe=0;buchstabe<ausprobierte.length;++buchstabe)
+            {   
+                if(ausprobierte[buchstabe]!=null)
+                {
+                    if(String.valueOf(wörter[zufall].charAt(index)).equalsIgnoreCase(ausprobierte[buchstabe]))
+                    {
+                        zähler=zähler+1;
+                    }
+                }
+            }
+
+        }
+        if(zähler==wörter[zufall].length())
+        {
+            System.out.println("Du hast gewonnen!");
+            System.out.println("Glückwunsch du konntest das richtige Wort:"+wörter[zufall]+", finden und das mit "+leben+" Leben übrig!");
+            System.exit(0);
+        }
+
         rundenanzahl=rundenanzahl+1;
     }
 }
