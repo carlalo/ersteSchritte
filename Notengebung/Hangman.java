@@ -17,7 +17,7 @@ public class Hangman
         männchen[0][1]=" |   |  ";
         männchen[0][2]=" |   O  ";
         männchen[0][3]=" |  -|- ";
-        männchen[0][4]=" |  /   ";
+        männchen[0][4]=" |  / \\ ";
         männchen[0][5]=" |      ";
         männchen[0][6]="---     ";
 
@@ -70,7 +70,7 @@ public class Hangman
 
     public void start()
     {
-        zufall=Integer.parseInt(String.valueOf(Math.round(Math.random()*5-1)));
+        zufall=Integer.parseInt(String.valueOf(Math.round(Math.random()*4)));
         ausprobierte=new String[26];
         leben=5;
         rundenanzahl=1;
