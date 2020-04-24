@@ -60,17 +60,21 @@ public class Hangman
         männchen[5][4]=" |      ";
         männchen[5][5]=" |      ";
         männchen[5][6]="---     ";
-        wörter=new String[5];
+        wörter=new String[9];
         wörter[0]="Hase";
         wörter[1]="Bahnlinie";
         wörter[2]="Quarantäne";
         wörter[3]="Äpfel";
         wörter[4]="Uhr";
+        wörter[5]="Eskorte";
+        wörter[6]="Armbanduhr";
+        wörter[7]="Wind";
+        wörter[8]="Federmäppchen";
     }
 
     public void start()
     {
-        zufall=Integer.parseInt(String.valueOf(Math.round(Math.random()*4)));
+        zufall=Integer.parseInt(String.valueOf(Math.round(Math.random()*wörter.length)));
         ausprobierte=new String[26];
         leben=5;
         rundenanzahl=1;
@@ -92,7 +96,7 @@ public class Hangman
             }
         }
         System.out.println("-".repeat(31));
-        System.out.println("Das gesuchte Wort ist :"+"_".repeat(wörter[zufall].length()));
+        System.out.println("Das gesuchte Wort ist :"+"_".repeat(wörter[zufall].length()-1));
         System.out.println("-".repeat(31));
         System.out.println("Ihr Versuch:");
 
