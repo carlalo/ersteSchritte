@@ -60,7 +60,7 @@ public class Hangman
         männchen[5][4]=" |      ";
         männchen[5][5]=" |      ";
         männchen[5][6]="---     ";
-        wörter=new String[9];
+        wörter=new String[20];
         wörter[0]="Hase";
         wörter[1]="Bahnlinie";
         wörter[2]="Quarantäne";
@@ -70,6 +70,17 @@ public class Hangman
         wörter[6]="Armbanduhr";
         wörter[7]="Wind";
         wörter[8]="Federmäppchen";
+        wörter[9]="Türschloss";
+        wörter[10]="Brioche";
+        wörter[11]="Handy";
+        wörter[12]="Buch";
+        wörter[13]="Baumstütze";
+        wörter[14]="Garagendach";
+        wörter[15]="Lautsprecher";
+        wörter[16]="Auto";
+        wörter[17]="Programm";
+        wörter[18]="Minister";
+        wörter[19]="Präsident";
     }
 
     public void start()
@@ -229,7 +240,7 @@ public class Hangman
             System.out.println("Du hast gewonnen!");
             System.out.println("Glückwunsch du konntest das richtige Wort:"+wörter[zufall]+", finden und das mit "+leben+" Leben übrig!");
             leben=-1;
-          
+
         }
 
         rundenanzahl=rundenanzahl+1;
