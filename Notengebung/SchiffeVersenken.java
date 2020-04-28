@@ -124,11 +124,15 @@ public class SchiffeVersenken
                 }
                 for(int reihe=0;reihe<5;++reihe)
                 {
-                    if(Spielereingegeben[reihe][anzahl]==true){
+                    if(Computerschiffe[reihe][anzahl]==true){
                         if(Computerschiffe[reihe][anzahl]==Spielereingegeben[reihe][anzahl])
                         {
                             System.out.print("  ");
                             System.out.print(kreuz[zeile]);
+                        }else
+                        {
+                            System.out.print("  ");
+                            System.out.print(kasten[zeile]);
                         }
                     }
                     else
@@ -155,7 +159,7 @@ public class SchiffeVersenken
             y=y-1;
             if(Spielereingegeben[y][x]!=true)
             {
-                Spielereingegeben[y-1][x-1]=true;
+                Spielereingegeben[y][x]=true;
                 if(Spielereingegeben[y][x]==Computerschiffe[y][x])
                 {
                     Computerleben=Computerleben-1;
