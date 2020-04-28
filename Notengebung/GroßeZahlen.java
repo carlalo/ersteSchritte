@@ -173,9 +173,7 @@ public class GroßeZahlen
                 sleep(1000);
             }   
 
-            sleep(1000);
-            Fratze Fratze =new Fratze();
-            Fratze.lachen();
+            
         }
     }
 
