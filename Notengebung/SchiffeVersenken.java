@@ -116,7 +116,10 @@ public class SchiffeVersenken
                     }
                     else
                     {
-                        if(Spielerschiffe[reihe][anzahl]==false)
+                        if(Computereingegeben[reihe][anzahl]==true)
+                        {
+                            System.out.print(kreuz[zeile]);}
+                        else
                         {
                             System.out.print(kasten[zeile]);
                         }
@@ -128,7 +131,7 @@ public class SchiffeVersenken
                         if(Computerschiffe[reihe][anzahl]==Spielereingegeben[reihe][anzahl])
                         {
                             System.out.print("  ");
-                            System.out.print(kreuz[zeile]);
+                            System.out.print(markiert[zeile]);
                         }else
                         {
                             System.out.print("  ");
@@ -136,9 +139,15 @@ public class SchiffeVersenken
                         }
                     }
                     else
-                    {
-                        System.out.print("  ");
-                        System.out.print(kasten[zeile]);
+                    {if(Spielereingegeben[reihe][anzahl]==true)
+                        {
+                            System.out.print("  ");
+                            System.out.print(kreuz[zeile]);
+                        }
+                        else{
+                            System.out.print("  ");
+                            System.out.print(kasten[zeile]);
+                        }
                     }
                 }
                 System.out.println(" ");
@@ -204,8 +213,7 @@ public class SchiffeVersenken
             }
             if(Computerleben==0)
             {
-                System.out.println("Du hast gewonnen. Herzlichen Glückwunsch ;-) Hier noch mal der aktuelle Spielplan");
-                spielplanAusgeben();
+                System.out.println("Du hast gewonnen. Herzlichen Glückwunsch ;-)");
                 Spielerleben=0;
             }
         }
